@@ -7,4 +7,8 @@
     <input type="text" name="input_b"><br>
   </form>
   <button type="submit" form="form_default" value="Submit">Submit</button>
+  {% for item in data %}
+  <li>{{item.user_id}}, {{item.fname}}, {{item.lname}}, {{item.val}}</li>
+  {% endfor %}
+
 </body>
