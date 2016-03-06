@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, url_for, redirect
 from jinja2 import Environment, PackageLoader
 from cassandra.cluster import Cluster
 
@@ -29,6 +29,13 @@ def route_main():
             values (%s, %s, %s)''', (msgid, input_a, input_b))
         return render_controlpanel()
 
+@app.route("/clear", methods=['GET'])
+def route_clear():
+    global msgid
+    msgid = 0
+    session.execute('truncate users')
+    return redirect(url_for('route_main'))
+    
 if __name__ == "__main__":
     app.debug = True
     app.run(host="0.0.0.0", port=3400)
