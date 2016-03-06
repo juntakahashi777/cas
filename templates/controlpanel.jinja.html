@@ -7,8 +7,11 @@
     <input type="text" name="input_b"><br>
   </form>
   <button type="submit" form="form_default" value="Submit">Submit</button>
+  <br>
   {% for item in data %}
   <li>{{item.user_id}}, {{item.fname}}, {{item.lname}}, {{item.val}}</li>
   {% endfor %}
 
+  <br>
+  <button type="submit" onclick="window.location='/clear';">clear database</button> 
 </body>
